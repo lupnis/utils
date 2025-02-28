@@ -42,8 +42,8 @@ class OpenAILLM:
             **kwargs
         )
         for shard in completion_result:
-            rra = await self._standard_stream_response(shard)
-            yield rra
+            response_shard = await self._standard_stream_response(shard)
+            yield response_shard
         return
 
     async def chatNoStream(self, messages: List[Dict[str, str]], model: Optional[str] = None, **kwargs):
